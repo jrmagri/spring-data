@@ -8,6 +8,7 @@ public class Cargo {
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
+    private String descricao;
 
     public Integer getId() {
         return Id;
@@ -24,8 +25,6 @@ public class Cargo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    private String descricao;
 
     @Override
     public String toString() {
