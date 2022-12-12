@@ -1,5 +1,8 @@
 package br.com.alura.springdata.orm;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +20,11 @@ public class Funcionario {
     @ManyToOne
     @JoinColumn(name = "cargo_id", nullable = false)
     private Cargo cargo;
-
+    @Fetch(FetchMode.SELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "funcionarios_unidades", joinColumns = {
-            @JoinColumn(name = "fk_funcionario")}, inverseJoinColumns = { @JoinColumn(name = "fk_unidade")})
+            @JoinColumn(name = "fk_funcionario") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_unidade") })
     private List<UnidadeTrabalho> unidadeTrabalhos;
 
     public void setUnidadeTrabalhos(List<UnidadeTrabalho> unidadeTrabalhos) {
@@ -75,7 +79,14 @@ public class Funcionario {
         this.dataContratacao = dataContratacao;
     }
 
-
-    public void setDataContratacao(int i, int i1, int i2) {
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", salario=" + salario +
+                ", dataContratacao=" + dataContratacao +
+                ", cargo=" + cargo.getDescricao();
     }
 }

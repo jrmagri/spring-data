@@ -45,9 +45,7 @@ public class CrudUnidadeTrabalhoService {
                     system = false;
                     break;
             }
-
         }
-        salvar(scanner);
     }
 
     public void salvar(Scanner scanner) {

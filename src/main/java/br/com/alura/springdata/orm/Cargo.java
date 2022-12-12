@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cargos")
 public class Cargo {
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     private String descricao;

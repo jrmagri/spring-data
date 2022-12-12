@@ -10,8 +10,8 @@ public class UnidadeTrabalho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
-
     private String endereco;
+
     @ManyToMany(mappedBy = "unidadeTrabalhos", fetch = FetchType.EAGER )
     private List<Funcionario> funcionarios;
 
